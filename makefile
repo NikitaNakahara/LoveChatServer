@@ -1,0 +1,2 @@
+all:
+	/usr/lib/jvm/java-1.11.0-openjdk-amd64/bin/java -javaagent:/snap/intellij-idea-community/383/lib/idea_rt.jar=43753:/snap/intellij-idea-community/383/bin -Dfile.encoding=UTF-8 -classpath /home/nikita/IdeaProjects/LoveChatServer/build/classes/java/main:/home/nikita/IdeaProjects/LoveChatServer/build/resources/main:/home/nikita/.gradle/caches/modules-2/files-2.1/org.json/json/20180813/8566b2b0391d9d4479ea225645c6ed47ef17fe41/json-20180813.jar Main
