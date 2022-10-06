@@ -4,9 +4,7 @@ import org.json.JSONObject;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Server {
     boolean stopServer = false;
@@ -67,9 +65,17 @@ public class Server {
             while (!client.isClosed()) {
                 try {
                     String message = input.readUTF();
-                    output.writeUTF(message);
+                    System.out.println(message);
+                    JSONObject json = new JSONObject(message);
+                    if (json.getString("type").equals("msg")) {
+                        Map<String, String> map = new HashMap<>();
+                        map.put("type", "msg");
+                        map.put("text", json.getString("text"));
+                        output.writeUTF(new JSONObject(map).toString());
+                    }
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    System.out.println("Client is disconnected");
+                    break;
                 }
             }
         }).start();
